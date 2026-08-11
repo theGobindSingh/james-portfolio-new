@@ -3,15 +3,22 @@ import "@styles/globals.css";
 import type { Metadata } from "next";
 import {
   DM_Mono as DmMono,
-  Inter,
-  Nothing_You_Could_Do as NothingYouCouldDo,
-  Poppins,
+  DM_Sans as DmSans,
+  Gloock,
+  Newsreader,
+  Reenie_Beanie as ReenieBeanie,
 } from "next/font/google";
 import { type PropsWithChildren } from "react";
 
-const fontSansSerif = Inter({
+const fontDisplay = Gloock({
+  variable: "--font-display",
+  weight: ["400"],
+  subsets: ["latin", "latin-ext"],
+});
+
+const fontSansSerif = Newsreader({
   variable: "--font-serif",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin", "latin-ext"],
 });
 
@@ -21,13 +28,13 @@ const fontMono = DmMono({
   subsets: ["latin", "latin-ext"],
 });
 
-const fontSans = Poppins({
+const fontSans = DmSans({
   variable: "--font-sans",
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin", "latin-ext"],
 });
 
-const fontCursive = NothingYouCouldDo({
+const fontCursive = ReenieBeanie({
   variable: "--font-cursive",
   weight: ["400"],
   subsets: ["latin"],
@@ -50,12 +57,13 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: PropsWithChildren<unknown>) => {
   return (
-    // eslint-disable-next-line better-tailwindcss/no-unknown-classes -- custom
-    <html lang="en" className={"light"}>
+    <html
+      lang="en"
+      // eslint-disable-next-line better-tailwindcss/no-unknown-classes -- custom
+      className={`light ${fontDisplay.variable} ${fontSansSerif.variable} ${fontMono.variable} ${fontSans.variable} ${fontCursive.variable}`}
+    >
       <head />
-      <body
-        className={`${fontSansSerif.variable} ${fontMono.variable} ${fontSans.variable} ${fontCursive.variable}`}
-      >
+      <body>
         <ThemeSetter />
         {children}
       </body>

@@ -24,8 +24,8 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  border-radius: var(--radius-none);
-  transition: all 300ms ease;
+  border-radius: var(--radius-sm);
+  transition: all var(--dur-base) var(--ease-out);
   cursor: pointer;
   white-space: nowrap;
   user-select: none;
@@ -74,7 +74,6 @@
   background-color: transparent;
   color: var(--c-text, var(--c));
   border: 1px solid var(--c);
-  font-size: var(--fs-3xs);
 
   &:hover {
     background-color: var(--c-hover);
