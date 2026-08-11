@@ -7,7 +7,6 @@ import {
   Nothing_You_Could_Do as NothingYouCouldDo,
   Poppins,
 } from "next/font/google";
-import { cookies } from "next/headers";
 import { type PropsWithChildren } from "react";
 
 const fontSansSerif = Inter({
@@ -40,19 +39,19 @@ export const metadata: Metadata = {
     "Starter template with Next.js, TypeScript, and Tailwind baseline.",
 };
 
-const getTheme = async () => {
-  try {
-    const cookieStore = await cookies();
-    return cookieStore.get("theme")?.value ?? null;
-  } catch {
-    return null;
-  }
-};
+// const getTheme = async () => {
+//   try {
+//     const cookieStore = await cookies();
+//     return cookieStore.get("theme")?.value ?? null;
+//   } catch {
+//     return null;
+//   }
+// };
 
-const RootLayout = async ({ children }: PropsWithChildren<unknown>) => {
-  const theme = await getTheme();
+const RootLayout = ({ children }: PropsWithChildren<unknown>) => {
   return (
-    <html lang="en" className={theme === "dark" ? "dark" : "light"}>
+    // eslint-disable-next-line better-tailwindcss/no-unknown-classes -- custom
+    <html lang="en" className={"light"}>
       <head />
       <body
         className={`${fontSansSerif.variable} ${fontMono.variable} ${fontSans.variable} ${fontCursive.variable}`}

@@ -50,12 +50,10 @@ src/
   styles/                 # globals.css, defaults.css, components.css
   hooks/                  # shared hooks (not populated yet; a hook lives beside its consumer
                            # in its component folder until a second route needs it)
-  icons/                  # shared icon components (not populated yet)
   data.ts                 # raw portfolio data (experience, case studies, projects), aliased @data
 public/
   assets/images/          # images
-  blogs/                  # blog markdown, see 4
-  ...                     # resume pdf, og images, other static assets
+  ...                     # pdf, og images, other static assets
 ```
 
 Keep route files thin: a route's `page.tsx`/`layout.tsx` compose its section folders and local

@@ -1,7 +1,6 @@
 @layer base {
   * {
     box-sizing: border-box;
-    transition: all 0.3s ease;
   }
 
   html,
@@ -73,16 +72,6 @@
     * {
       scrollbar-width: thin;
       scrollbar-color: var(--color-grey-600) transparent;
-    }
-  }
-
-  /* ─── Reduced Motion ─── */
-  @media (prefers-reduced-motion: reduce) {
-    * {
-      transition-duration: 0.01ms !important;
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      scroll-behavior: auto !important;
     }
   }
 }
