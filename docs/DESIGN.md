@@ -88,8 +88,8 @@ in this document.** If a hue needs to change, it changes in `globals.css` and no
 - **`primary`** / **`secondary`** — near-desaturated neutrals. Functionally monochrome; use
   for secondary tonal variation, not as "brand hues."
 - **`accent`** — the one saturated color in the system: a print-ink hue reserved for
-  interactive and emphasis moments (focus rings, links, the live indicator dot, a single
-  emphasized word in a headline). Never a background fill for large areas.
+  interactive and emphasis moments (focus rings, links, a single emphasized word in a
+  headline). Never a background fill for large areas.
 - **`success` / `caution` / `info` / `error`** — semantic ramps for status only (form
   validation and submission state). Never decoration, never a "category color."
 
@@ -263,11 +263,10 @@ A system can have a kit of techniques but it can only have **one signature** —
 element the site is remembered by. Here it is the **process-dot registration system**.
 
 Four small process dots (c/m/y/k) act as the site's maker's mark and its only piece of
-persistent identity furniture. They anchor the navigation shell, and one of them — the dot
-matching the accent ink — is _live_: it carries the site's only ambient motion, a slow pulse,
-like a press still running. Where a page needs a mark rather than a rule, it gets a
-registration mark drawn from the same family. The dots are the through-line that makes the
-site feel like output from a single press run rather than a set of nicely typeset pages.
+persistent identity furniture. They anchor the navigation shell. Where a page needs a mark
+rather than a rule, it gets a registration mark drawn from the same family. The dots are the
+through-line that makes the site feel like output from a single press run rather than a set
+of nicely typeset pages.
 
 This is where the boldness is spent. **Everything else in the kit below is supporting
 texture and must stay quieter than the dots.** If a new idea competes with the signature for
@@ -282,9 +281,6 @@ or the site loses its spine.
 
 **The Single Signature Rule.** A system may have a kit of techniques but only one signature.
 Nothing else is allowed to become memorable at the dots' expense.
-
-**The Live Dot Rule.** Exactly one dot is alive. The pulse is slow, low-contrast, and the
-site's only ambient motion. A second animated mark kills the first.
 
 ## The opening statement
 
