@@ -55,7 +55,7 @@ const PrimaryNav = () => {
           color="accent"
           className="mt-4 lg:mt-0 lg:ml-2"
         >
-          resume
+          RESUME
         </Link>
       </span>
     </nav>

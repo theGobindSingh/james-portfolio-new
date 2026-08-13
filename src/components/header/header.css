@@ -122,10 +122,10 @@
   gap: 2rem;
   font-family: var(--font-sans);
   font-size: var(--fs-3xs);
-  text-transform: lowercase;
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--dur-slow) var(--ease-out);
+  font-weight: 500;
 
   @media (prefers-reduced-motion: reduce) {
     transition: none;
