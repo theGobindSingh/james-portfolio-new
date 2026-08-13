@@ -290,6 +290,15 @@
   --color-overlay: hsl(var(--color-grey-50-base) / 0.85);
   --color-focus: var(--color-accent-500);
 
+  /* ---- process dots (CMYK signature — flat inks, not ramps; reused wherever the
+   *      c/m/y/k mark appears, not just the nav). y and k alias existing tokens
+   *      (the accent ink and primary text ink); c and m are new, muted to match
+   *      the paper-stock/print-ink palette rather than screen-saturated CMYK. ---- */
+  --color-dot-c: hsl(192, 38%, 52%);
+  --color-dot-m: hsl(332, 42%, 52%);
+  --color-dot-y: var(--color-accent-500);
+  --color-dot-k: var(--color-text);
+
   /* ---- type scale (UI/body tier; shrinks on small screens below) ---- */
   --fs-4xs: 0.75rem;
   --fs-3xs: 0.875rem;
@@ -626,6 +635,11 @@
 
   --color-black: var(--color-black);
   --color-white: var(--color-white);
+
+  --color-dot-c: var(--color-dot-c);
+  --color-dot-m: var(--color-dot-m);
+  --color-dot-y: var(--color-dot-y);
+  --color-dot-k: var(--color-dot-k);
 
   --text-headline: var(--fs-1xl);
   --text-title: var(--fs-m);

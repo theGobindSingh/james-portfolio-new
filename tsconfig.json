@@ -17,6 +17,7 @@
       "@utils/*": ["./src/utils/*"],
       "@icons": ["./src/icons/index.ts"],
       "@icons/*": ["./src/icons/*"],
+      "@app/*": ["./src/app/*"],
       "@/*": ["./src/*"]
     },
     "noPropertyAccessFromIndexSignature": false,

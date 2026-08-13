@@ -18,7 +18,7 @@ export interface FullWidthWrapperProps extends PropsWithChildren {
   isContainerCenter?: boolean;
   containerSize?: string;
   maxContentWidth?: string;
-  wrapperProps?: HTMLAttributes<HTMLElement>;
+  wrapperProps?: HTMLAttributes<HTMLElement> & Record<`data-${string}`, string>;
 }
 
 const FullWidthWrapperWithoutRef = (

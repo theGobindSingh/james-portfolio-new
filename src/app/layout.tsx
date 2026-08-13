@@ -1,4 +1,5 @@
 import ThemeSetter from "@/app/theme-setter";
+import Header from "@components/header";
 import "@styles/globals.css";
 import type { Metadata } from "next";
 import {
@@ -65,6 +66,7 @@ const RootLayout = ({ children }: PropsWithChildren<unknown>) => {
       <head />
       <body>
         <ThemeSetter />
+        <Header />
         {children}
       </body>
     </html>

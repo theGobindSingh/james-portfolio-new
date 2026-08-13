@@ -339,8 +339,10 @@ All of it sits below the signature in the hierarchy of attention.
   write a second observer.
 - **Contracting navigation** — navigation begins flush and full-width at the top of a page,
   then on scroll contracts into a floating, self-contained shell that reads as a small object
-  laid on the paper. Lowercase links, mono or sans, with the process dots anchoring one end.
-  The transition is a single continuous state change, not two separate components swapping.
+  laid on the paper. Lowercase links, mono or sans, with the process dots anchoring one end,
+  separated by a plain `|` pipe character (not a hairline rule — the pipe reads as a typeset
+  mark, in keeping with the mono/sans nav voice). The transition is a single continuous state
+  change, not two separate components swapping.
 - **Index rows over card grids** — collections of work are presented as typographic rows
   (identifier, title, discipline tags) with imagery revealed on interaction, rather than as a
   grid of image cards. This keeps the type doing the work and the page quiet at rest. On

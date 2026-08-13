@@ -1,0 +1,180 @@
+/*
+ * Header shell + mobile-menu styling.
+ *
+ * data-scrolled / data-open live on the <header> element itself (set
+ * directly in menu-controller.tsx) — every rule here reacts to those two
+ * attributes on an ancestor rather than branching in TSX, so header-nav /
+ * header-nav-item stay static server markup.
+ *
+ * Declared with @utility (not @layer components) so Tailwind v4 registers
+ * these as real utility candidates — eslint-plugin-better-tailwindcss then
+ * recognizes them automatically, same pattern as button.css.
+ */
+
+/* Outer sticky element — just the padding that creates the floating pill's
+   inset once scrolled. */
+@utility header-wrapper {
+  position: fixed;
+  top: 0;
+  z-index: var(--z-nav);
+  width: 100%;
+  padding-block: 0;
+  transition: padding var(--dur-slow) var(--ease-out);
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  &[data-scrolled="true"] {
+    padding-block: 0.75rem;
+  }
+}
+
+/* The header IS the modal: one element that grows from a bar into a
+   (near-)fullscreen panel on open, not a bar plus a separate overlay. At
+   rest, at the top of the page: edge-to-edge. Once scrolled (the floating
+   pill), it keeps that pill's inset — a small gap on every side — just
+   tall enough to nearly fill the screen instead of a full bleed. */
+@utility header-shell {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: calc(100% - (var(--gutter) * 2));
+  max-width: var(--max-content-width, var(--container-max));
+  height: var(--header-height);
+  border: 1px solid hsla(var(--color-grey-700-base), 0);
+  background-color: var(--color-bg);
+  transition:
+    height var(--dur-slow) var(--ease-out),
+    border-color var(--dur-slow) var(--ease-out),
+    border-radius var(--dur-slow) var(--ease-out),
+    padding var(--dur-slow) var(--ease-out),
+    box-shadow var(--dur-slow) var(--ease-out),
+    background-color var(--dur-slow) var(--ease-out),
+    backdrop-filter var(--dur-slow) var(--ease-out);
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  /* Scrolled = a frosted-glass floating pill: translucent card over a
+     blurred backdrop, so page content stays faintly visible underneath. */
+  [data-scrolled="true"] & {
+    height: 3.5rem;
+    border: 1px solid hsla(var(--color-grey-700-base), 0.3);
+    border-radius: var(--radius-sm);
+    padding-inline: 1.5rem;
+    background-color: hsla(var(--color-grey-50-base), 0.85);
+    backdrop-filter: blur(5.5px);
+    box-shadow: 0 2px 16px hsla(var(--color-grey-200-base), 1);
+  }
+
+  /* Open-state height only exists below the desktop breakpoint — the
+     hamburger is lg:hidden, so there's nothing to guard against there.
+     svh (not dvh): dvh live-recalculates as the mobile browser's address
+     bar hides/shows, so a height transition targeting 100dvh gets its
+     target shifted mid-animation by that toolbar's own motion — reads as
+     a jitter. svh assumes the toolbar is always shown, giving the
+     transition a fixed target. */
+  @media (max-width: 1023.98px) {
+    [data-open="true"] & {
+      height: 100svh;
+    }
+
+    [data-scrolled="true"][data-open="true"] & {
+      height: calc(100svh - 1.5rem);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    overflow: visible;
+  }
+}
+
+/* Dots + hamburger row — pinned to its natural height so it never moves
+   while header-shell grows into the mobile menu around it. */
+@utility header-row {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+  transition: height var(--dur-slow) var(--ease-out);
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  [data-scrolled="true"] & {
+    height: 3.5rem;
+  }
+}
+
+@utility header-nav {
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  font-family: var(--font-sans);
+  font-size: var(--fs-3xs);
+  text-transform: lowercase;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-slow) var(--ease-out);
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  @media (max-width: 1023.98px) {
+    [data-open="true"] & {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 1.5rem;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@utility header-nav-item {
+  opacity: 0;
+  transform: translateY(0.5rem);
+  /* Duration is shorter than the container's --dur-slow growth on purpose:
+     primary-nav.tsx staggers each item with a delay-* class (up to 225ms
+     for the resume link), so a full --dur-slow duration here would have
+     the last item still sliding ~225ms after the container has already
+     stopped growing — a stray jitter right at the end of the open motion.
+     --dur-fast keeps every item's delay + duration inside the container's
+     500ms window. */
+  transition: all var(--dur-fast) var(--ease-out);
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 1023.98px) {
+    [data-open="true"] & {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    opacity: 1;
+    transform: translateY(0);
+    transition: none;
+  }
+}

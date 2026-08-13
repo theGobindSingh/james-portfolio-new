@@ -1,9 +1,10 @@
-import HomeHeroSection from "@/app/home/hero";
+import HomeHeroSection from "@app/home/hero";
 
 const HomePage = () => {
   return (
-    <main>
+    <main id="main-content">
       <HomeHeroSection />
+      <div className="h-screen"></div>
     </main>
   );
 };
