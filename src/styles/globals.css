@@ -25,7 +25,10 @@
  *    Families: grey | primary | secondary | accent | success | caution | info | error
  *    Stops:    50 (lightest) → 950 (darkest) in light mode
  *
- *    To use a color at alpha:  hsl(var(--color-grey-900-base) / 0.15)
+ *    To use a color at alpha:  hsla(var(--color-grey-900-base), 0.15)
+ *      (the -base triplet is comma-separated, so mixing it into hsl()'s
+ *      space+slash alpha syntax is invalid at computed-value time and
+ *      silently falls back to currentcolor — always pair -base with hsla())
  *    To use a solid color:     var(--color-grey-900)
  *
  *  DARK MODE — the `.dark` block only redefines the -base values by reversing the
@@ -65,7 +68,7 @@
  *  HOW TO CONSUME (in components):
  *    1. Prefer semantic roles:      var(--color-text), var(--color-bg)
  *    2. For tints, use ramp stops:  var(--color-grey-500), var(--color-accent-700)
- *    3. For alpha, use -base:       hsl(var(--color-grey-900-base) / 0.1)
+ *    3. For alpha, use -base:       hsla(var(--color-grey-900-base), 0.1)
  *    4. Tailwind utilities:         bg-grey-50, text-accent-500, bg-accent-muted
  *
  *  DO NOT:
@@ -283,11 +286,11 @@
   --color-text-muted: var(--color-grey-800);
   --color-text-subtle: var(--color-grey-700);
   --color-text-inverse: var(--color-grey-50);
-  --color-border: hsl(var(--color-grey-700-base) / 0.3);
+  --color-border: hsla(var(--color-grey-700-base), 0.3);
   --color-border-strong: var(--color-grey-700);
-  --color-grid-line: hsl(var(--color-grey-700-base) / 0.12);
-  --color-crosshair: hsl(var(--color-grey-700-base) / 0.35);
-  --color-overlay: hsl(var(--color-grey-50-base) / 0.85);
+  --color-grid-line: hsla(var(--color-grey-700-base), 0.12);
+  --color-crosshair: hsla(var(--color-grey-700-base), 0.35);
+  --color-overlay: hsla(var(--color-grey-50-base), 0.85);
   --color-focus: var(--color-accent-500);
 
   /* ---- process dots (CMYK signature — flat inks, not ramps; reused wherever the

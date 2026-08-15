@@ -23,10 +23,10 @@ const heroStyle = `
 
 const HomeHeroSection = () => {
   return (
-    <FullWidthWrapper className="flex min-h-screen flex-col items-center pt-(--header-height) lg:h-screen lg:justify-center lg:pt-0">
+    <FullWidthWrapper className="relative flex min-h-screen flex-col items-center justify-center gap-16 pt-(--header-height) lg:h-screen lg:pt-0">
       <style>{heroStyle}</style>
-      <div className="pt-12 text-center lg:pt-0">
-        <p className="mb-6 font-mono text-(length:--fs-3xs) tracking-wide text-(--color-text-muted) uppercase">
+      <div className="text-center">
+        <p className="mb-7 font-mono text-(length:--fs-3xs) tracking-wide text-(--color-text-muted) uppercase">
           {`Art Director & Brand Manager`}
         </p>
         <h1 className="hero-name font-display text-(length:--fs-display-hero) leading-(--leading-display) tracking-(--tracking-display)">
@@ -34,18 +34,20 @@ const HomeHeroSection = () => {
           Loder
           <span className="animate-[hero-dot-cycle_8s_linear_infinite]">.</span>
         </h1>
-        <p className="mt-6 font-serif text-(length:--fs-m) italic text-(--color-text-muted)">
+        <p className="mt-7 font-serif text-(length:--fs-m) italic text-(--color-text-muted)">
           I build creative systems that stay coherent under pressure.
         </p>
       </div>
-      <p className="mx-auto mt-16 max-w-[65ch] text-center text-(length:--fs-s) text-(--color-text-muted)">
-        I work close to the brand, turning strategy into systems other people
-        can run — guidelines, templates, and review structures that hold up once
-        I&apos;m not in the room.
-      </p>
-      <Link href="/work" variant="outlined" size="md" className="mt-8">
-        See the work
-      </Link>
+      <div className="flex flex-col items-center gap-8">
+        <p className="mx-auto max-w-[65ch] text-center text-(length:--fs-s) text-(--color-text-muted)">
+          I work close to the brand, turning strategy into systems other people
+          can run — guidelines, templates, and review structures that hold up
+          once I&apos;m not in the room.
+        </p>
+        <Link href="/work" variant="outlined" size="md">
+          See the work
+        </Link>
+      </div>
     </FullWidthWrapper>
   );
 };
