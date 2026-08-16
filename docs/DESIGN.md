@@ -130,7 +130,7 @@ warmth is load-bearing. Never flatten a surface toward pure white to "clean it u
 
 ## Typography
 
-Five font families, all loaded via `next/font/google` in the root layout, each mapped to a
+Six font families, all loaded via `next/font/google` in the root layout, each mapped to a
 CSS variable and given a role. **No self-hosted or licensed faces** — if a role needs a
 different family, swap it in the loader; nothing downstream changes.
 
@@ -149,13 +149,18 @@ different family, swap it in the loader; nothing downstream changes.
   marked-up proof: a signature, a margin note, a circled remark. Never for body copy, never
   more than one instance per page, and it must always look like human residue on a printed
   page rather than decoration.
+- **`--ff-poster` (Bebas Neue)** — a condensed poster-grotesk, owner-approved exception to the
+  five-role system above, reserved for exactly one moment: the home page's "Live by design"
+  statement (`src/app/home/live-by-design/`). It is not a second display option — do not reach
+  for it anywhere `--ff-display` would otherwise apply.
 
 **Type scale — use `--fs-*` only.** `globals.css` defines a UI/body tier (`--fs-4xs` through
 `--fs-4xl`, shrinking under the small-screen media query) and a monumental display tier
 (`--fs-display-section`, `--fs-display-hero`, with `--leading-display` / `--tracking-display`).
 Unlike a system where the display tier is dead code, **here it is live and reserved**: only
 `--ff-display` text may use it, and only for the primary statement and top-level section
-headers. Everything else — including large sans headings — sizes from the `--fs-*` UI tier.
+headers — with one named exception, `--ff-poster` on the "Live by design" statement above.
+Everything else — including large sans headings — sizes from the `--fs-*` UI tier.
 If a non-display element wants to be bigger than `--fs-4xl`, that's a signal the hierarchy is
 wrong, not a licence to reach for the display tier.
 
@@ -313,10 +318,16 @@ All of it sits below the signature in the hierarchy of attention.
 - **Process dots (c/m/y/k)** — the signature; see above for intent. Placement rules: the
   navigation shell always, plus at most one further quiet appearance per page. They are never
   a legend, never a color key, never a category system, and never expand into a palette.
+  **Owner-approved exception on `/` only:** the nav, the hero's cycling dot, and the
+  "Live by design" section's dots together spend three appearances on the home page — the
+  section is treated as the one deliberate signature moment the home page is built around.
+  Every other page still holds to the single-quiet-appearance limit.
 - **Torn paper edge** — a delicacy. **At most one per page, and not on every page.** It marks
   a genuine change of ground (the transition out of the opening statement, or into a closing
   band), implemented as a masked/SVG edge rather than an image asset. Two on a page, or one on
-  every page, kills it.
+  every page, kills it. **Owner-approved exception:** the home page's "Live by design" section
+  is torn on both its top and bottom, because the section is a sheet lifted off the page rather
+  than a single ground change — one torn *element*, not two separate ground changes.
 - **Grid decoration** — faint vertical column lines and small crosshair/registration marks
   drawn from `--color-grid-line` and `--color-crosshair`, sitting behind content on the
   `--z-grid` layer. Deployed selectively: opening statements and index/grid surfaces, not

@@ -1,0 +1,115 @@
+/*
+ * Torn-sheet section: an elevated white sheet torn away from the page along
+ * its top and bottom edges, plus the per-letter roll-up used by the title.
+ *
+ * Declared with @utility (not @layer components) so Tailwind v4 registers
+ * these as real utility candidates — see components/button/button.css for
+ * the same rationale.
+ */
+
+/* ── Torn sheet ───────────────────────────────────────── */
+
+@utility torn-sheet {
+  /* Edge band height — the one calibration knob. Matched to the source
+     images' native aspect ratio (250/1920 ≈ 13%) so the tear scales with
+     the section's full-bleed width instead of reading as a thin sliver. */
+  --_tear: clamp(3.5rem, 13vw, 12rem);
+
+  background-color: var(--color-white);
+  padding-block: calc(var(--section-pad-y) + var(--_tear));
+
+  mask-image:
+    url("/assets/images/torn-edge-top.png"),
+    linear-gradient(#000, #000),
+    url("/assets/images/torn-edge-bottom.png");
+  mask-size:
+    100% var(--_tear),
+    100% calc(100% - var(--_tear) * 2),
+    100% var(--_tear);
+  mask-position:
+    top center,
+    center,
+    bottom center;
+  mask-repeat: no-repeat;
+
+  -webkit-mask-image:
+    url("/assets/images/torn-edge-top.png"),
+    linear-gradient(#000, #000),
+    url("/assets/images/torn-edge-bottom.png");
+  -webkit-mask-size:
+    100% var(--_tear),
+    100% calc(100% - var(--_tear) * 2),
+    100% var(--_tear);
+  -webkit-mask-position:
+    top center,
+    center,
+    bottom center;
+  -webkit-mask-repeat: no-repeat;
+
+  filter: drop-shadow(0 2px 10px hsla(var(--color-grey-900-base), 0.1));
+}
+
+/* ── Per-letter roll-up ───────────────────────────────── */
+
+@utility char-container {
+  height: 1em;
+  line-height: 1;
+  overflow: hidden;
+
+  @media (prefers-reduced-motion: no-preference) {
+    &:hover .char {
+      transform: translateY(-100%);
+    }
+  }
+}
+
+@utility char {
+  height: 1em;
+  line-height: 1;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: transform var(--dur-slow) var(--ease-out);
+  }
+}
+
+/* ── Registration dots ───────────────────────────────── */
+
+@utility dot-column {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.025em;
+  transform: translateX(100%);
+  padding-left: 0.5em;
+
+  @media (prefers-reduced-motion: no-preference) {
+    & .dot {
+      transition: transform var(--dur-base) var(--ease-out);
+    }
+
+    &:hover .dot:nth-child(1) {
+      transform: translateY(-100%);
+      transition-delay: calc(0.08s * 0);
+    }
+    &:hover .dot:nth-child(2) {
+      transform: translateY(-100%);
+      transition-delay: calc(0.08s * 1);
+    }
+    &:hover .dot:nth-child(3) {
+      transform: translateY(-100%);
+      transition-delay: calc(0.08s * 2);
+    }
+    &:hover .dot:nth-child(4) {
+      transform: translateY(-100%);
+      transition-delay: calc(0.08s * 3);
+    }
+  }
+}
+
+@utility dot {
+  width: 0.125em;
+  height: 0.125em;
+  border-radius: var(--radius-pill);
+}

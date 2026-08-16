@@ -59,11 +59,12 @@
  *              functionally monochrome — not brand hues.
  *
  *  TYPOGRAPHY — raw fs-* scale (line ~245) + display clamps; fonts wired via
- *    next/font into @theme as --font-display / --font-sans / --font-serif /
- *    --font-mono / --font-cursive. Roles: Gloock (display, hero + section
- *    headers only), DM Sans (body/UI), DM Mono (labels/meta, uppercase),
- *    Newsreader (serif, pull quotes/testimonials), Reenie Beanie (cursive,
- *    rationed hand-annotation accent).
+ *    next/font into @theme as --font-display / --font-poster / --font-sans /
+ *    --font-serif / --font-mono / --font-cursive. Roles: Gloock (display, hero
+ *    + section headers only), Bebas Neue (poster, the "Live by design"
+ *    statement treatment only — see DESIGN.md), DM Sans (body/UI), DM Mono
+ *    (labels/meta, uppercase), Newsreader (serif, pull quotes/testimonials),
+ *    Reenie Beanie (cursive, rationed hand-annotation accent).
  *
  *  HOW TO CONSUME (in components):
  *    1. Prefer semantic roles:      var(--color-text), var(--color-bg)
@@ -510,6 +511,7 @@
     cursive = Reenie Beanie.
   */
   --font-display: var(--ff-display);
+  --font-poster: var(--ff-poster);
   --font-sans: var(--ff-sans);
   --font-serif: var(--ff-serif);
   --font-mono: var(--ff-mono);

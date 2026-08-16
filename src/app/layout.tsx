@@ -2,6 +2,7 @@ import Header from "@components/header";
 import "@styles/globals.css";
 import type { Metadata } from "next";
 import {
+  Bebas_Neue as BebasNeue,
   DM_Mono as DmMono,
   DM_Sans as DmSans,
   Gloock,
@@ -14,6 +15,12 @@ const fontDisplay = Gloock({
   variable: "--font-display",
   weight: ["400"],
   subsets: ["latin", "latin-ext"],
+});
+
+const fontPoster = BebasNeue({
+  variable: "--font-poster",
+  weight: ["400"],
+  subsets: ["latin"],
 });
 
 const fontSansSerif = Newsreader({
@@ -60,7 +67,7 @@ const RootLayout = ({ children }: PropsWithChildren<unknown>) => {
     <html
       lang="en"
       // eslint-disable-next-line better-tailwindcss/no-unknown-classes -- custom
-      className={`light ${fontDisplay.variable} ${fontSansSerif.variable} ${fontMono.variable} ${fontSans.variable} ${fontCursive.variable}`}
+      className={`light ${fontDisplay.variable} ${fontPoster.variable} ${fontSansSerif.variable} ${fontMono.variable} ${fontSans.variable} ${fontCursive.variable}`}
     >
       <head />
       <body>
